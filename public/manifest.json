@@ -1,0 +1,37 @@
+{
+  "name": "Bedrock \u2014 Budget Smarter",
+  "short_name": "Bedrock",
+  "description": "Personal budgeting app",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#090e1a",
+  "theme_color": "#090e1a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Add Transaction",
+      "short_name": "Add",
+      "url": "./?action=add",
+      "description": "Quick add a transaction"
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Home",
+      "url": "./?page=dashboard",
+      "description": "View your dashboard"
+    }
+  ]
+}

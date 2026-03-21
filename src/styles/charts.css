@@ -1,0 +1,28 @@
+/* ── CANVAS ── */
+canvas.chart { display: block; max-width: 100%; }
+canvas.ring  { display: block; flex-shrink: 0; }
+
+/* ── CHART TOOLTIP ── */
+#chart-tooltip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9000;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .28);
+  font-size: 13px;
+  font-family: inherit;
+  opacity: 0;
+  transition: opacity .12s;
+  min-width: 120px;
+  max-width: 220px;
+}
+#chart-tooltip.visible { opacity: 1; }
+#chart-tooltip .tt-label { font-size: 11px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+#chart-tooltip .tt-row   { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+#chart-tooltip .tt-dot   { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+#chart-tooltip .tt-name  { color: var(--text2); font-size: 12px; flex: 1; }
+#chart-tooltip .tt-val   { font-weight: 800; color: var(--text); font-size: 13px; }
+#chart-tooltip .tt-pct   { font-size: 11px; color: var(--text3); margin-left: 2px; }

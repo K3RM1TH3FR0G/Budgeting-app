@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!--
+    Content Security Policy.
+    'unsafe-inline' is required in style-src because the app uses inline style
+    attributes throughout (e.g. style="color:..."). These will be progressively
+    moved to CSS classes during the modularisation steps.
+    script-src has no 'unsafe-inline' — Vite's hashed output files satisfy this,
+    which is the key security improvement over the original single-file build.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    connect-src 'self' https://*.supabase.co wss://*.supabase.co http://localhost:* ws://localhost:*;
+    img-src 'self' data: blob:;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+  ">
+
+  <meta name="theme-color" content="#090e1a" id="theme-meta">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bedrock">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwOTBlMWEiLz4KICA8cmVjdCB4PSIyMCIgeT0iMTIiIHdpZHRoPSIyNCIgaGVpZ2h0PSI4IiByeD0iMi41IiBmaWxsPSIjNjBhNWZhIi8+CiAgPHJlY3QgeD0iMTYiIHk9IjI0IiB3aWR0aD0iMzIiIGhlaWdodD0iOCIgcng9IjIuNSIgZmlsbD0iIzNiODJmNiIvPgogIDxyZWN0IHg9IjEyIiB5PSIzNiIgd2lkdGg9IjQwIiBoZWlnaHQ9IjgiIHJ4PSIyLjUiIGZpbGw9IiMxZDRlZDgiLz4KICA8cmVjdCB4PSI4IiAgeT0iNDgiIHdpZHRoPSI0OCIgaGVpZ2h0PSI4IiByeD0iMi41IiBmaWxsPSIjMWUzYThhIi8+Cjwvc3ZnPg==">
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-180.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120.png">
+  <link rel="apple-touch-icon" sizes="76x76"   href="/icons/icon-76.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <title>Bedrock — Budget Smarter</title>
+  <meta name="description" content="Bedrock is a personal budgeting app to track spending, manage budgets, set savings goals, and forecast your financial future.">
+  <meta property="og:title" content="Bedrock — Budget Smarter">
+  <meta property="og:description" content="Track spending, manage budgets, and reach your savings goals.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
