@@ -19,20 +19,26 @@ const DEFAULT_CATS=[
 function loadCustomCats(){
   const uid=State.user?.id;if(!uid)return;
   const saved=Cache.get(uid,'custom_cats',null);
-  if(saved)CATS=[...DEFAULT_CATS,...saved];
-  else CATS=[...DEFAULT_CATS];
+  cats.list.length = 0;
+  const newList = saved ? [...DEFAULT_CATS,...saved] : [...DEFAULT_CATS];
+  newList.forEach(c => cats.list.push(c));
 }
 
 function saveCustomCats(){
   const uid=State.user?.id;if(!uid)return;
-  const custom=CATS.filter(c=>c.custom);
+  const custom=cats.list.filter(c=>c.custom);
   Cache.set(uid,'custom_cats',custom);
   // Fire cloud write in background — never blocks UI
   setTimeout(()=>supa.from('settings').upsert({user_id:uid,custom_cats:JSON.stringify(custom)}).catch(()=>{}),0);
 }
 
 
-let CATS = [...DEFAULT_CATS];
-export { CATS, DEFAULT_CATS };
-export const getCat = id => CATS.find(c=>c.id===id)||CATS.find(c=>c.id==='other');
+// CATS is wrapped in an object so modules can mutate it without reassigning the import
+export const cats = { list: [...DEFAULT_CATS] };
+export { DEFAULT_CATS };
+export const getCat = id => cats.list.find(c=>c.id===id)||cats.list.find(c=>c.id==='other');
+
+// Keep CATS as a convenience alias pointing to the same array
+export const CATS = cats.list;
+
 export { loadCustomCats, saveCustomCats };

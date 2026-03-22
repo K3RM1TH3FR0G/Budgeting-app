@@ -6,7 +6,7 @@ import { State, Cache, saveAndSync, queueSync,
           DEFAULT_BUDGETS, getDebts, saveDebts,
           getNWHistory, saveNWHistory,
           saveSplits, saveBills }            from '../state.js';
-import { getCat, CATS }                     from '../categories.js';
+import { getCat, CATS, cats }               from '../categories.js';
 import { render, showToast, openModal, closeModal,
           bedrockLogo, setSyncIndicator }     from '../ui.js';
 import { navigate }                          from '../router.js';
@@ -43,7 +43,7 @@ function renderCategories(){
     $('#btn-new-cat')?.addEventListener('click',()=>showNewCatModal());
     $$('[data-del-cat]').forEach(b=>b.addEventListener('click',()=>{
       const id=b.dataset.delCat;
-      CATS=CATS.filter(c=>c.id!==id);
+      const idx=cats.list.findIndex(c=>c.id===id); if(idx>=0) cats.list.splice(idx,1);
       renderCategories();
       showToast('Category removed');
       queueSync('custom_cats',()=>saveCustomCats(),300);
